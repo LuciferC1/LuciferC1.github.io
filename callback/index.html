@@ -1,0 +1,13 @@
+<!doctype html><meta charset="utf-8"><title>Tesla OAuth callback</title>
+<meta name="referrer" content="no-referrer">
+<style>body{font-family:sans-serif;max-width:40em;margin:3em auto}code{word-break:break-all;background:#eee;padding:.3em}</style>
+<h1>Tesla sign-in complete</h1>
+<p>Copy this authorization code (valid for a few minutes) and give it to exchange_code.sh:</p>
+<p><code id="c">(no code in URL)</code></p>
+<p>State: <code id="s"></code></p>
+<script>
+const p=new URLSearchParams(location.search);
+if(p.get('code'))document.getElementById('c').textContent=p.get('code');
+if(p.get('error'))document.getElementById('c').textContent='ERROR: '+p.get('error')+' '+(p.get('error_description')||'');
+document.getElementById('s').textContent=p.get('state')||'';
+</script>
